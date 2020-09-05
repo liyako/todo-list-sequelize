@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 const bcrypt = require('bcryptjs')
 const SEED_USER = {
   name: 'root',
@@ -6,7 +6,7 @@ const SEED_USER = {
   password: '12345678'
 }
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [{
       name: SEED_USER.name,
       email: SEED_USER.email,
@@ -19,15 +19,13 @@ module.exports = {
           ({
             name: `name-${i}`,
             UserId: userId,
-            isDone: `1`,
             createdAt: new Date(),
             updatedAt: new Date()
           })
         ), {}))
   },
-
-  down: async (queryInterface, Sequelize) => {
+  down: (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('Todos', null, {})
       .then(() => queryInterface.bulkDelete('Users', null, {}))
   }
-};
+}

@@ -21,6 +21,7 @@ router.post('/', (req, res) => {
 //check
 router.get('/:id', (req, res) => {
   const UserId = req.user.id
+  const id = req.params.id
   return Todo.findOne({
     where: { id, UserId }
   })
