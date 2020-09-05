@@ -25,7 +25,7 @@ router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
   User.findOne({ where: { email } }).then(user => {
     if (user) {
-      console.log('User already exists')
+      //console.log('User already exists')
       return res.render('register', {
         name,
         email,
@@ -48,6 +48,7 @@ router.post('/register', (req, res) => {
   
 router.get('/logout', (req, res) => {
     res.send('logout')
+    res.redirect('/users/login')
   })
 
   module.exports = router
